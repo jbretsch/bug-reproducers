@@ -1,0 +1,26 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.2.3'
+    id 'io.spring.dependency-management' version '1.1.4'
+}
+
+java {
+    sourceCompatibility = '17'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // Switch these dependencies to make "Problems reading data from Binary store" disappear.
+    implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+    implementation 'net.bretti.openapi-route-definition-locator:openapi-route-definition-locator-spring-cloud-starter'
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "net.bretti.openapi-route-definition-locator:openapi-route-definition-locator-bom:0.6.7-sc-2023.0"
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:2023.0.0"
+    }
+}
